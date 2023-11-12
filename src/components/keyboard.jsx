@@ -1,52 +1,22 @@
 import React, { useState } from "react";
 import Key from "./key.jsx";
-import {
-  enLetters,
-  enUperCaseLetters,
-  numbers,
-  heLetters,
-  symbols,
-} from "../keyboardData.jsx";
+import keyboardData from "../keyboardData.jsx";
+console.log("keyboardData: ", keyboardData);
 
 function Keyboard({ addCharToText }) {
   const [keyboardArr, setKeyboardArr] = useState(enLetters);
 
   console.log("render");
   function changeKeyboardContent(type) {
-    switch (type) {
-      case 0:
-        setKeyboardArr(enLetters);
-        break;
-      case 1:
-        setKeyboardArr(enUperCaseLetters);
-        break;
-      case 2:
-        setKeyboardArr(numbers);
-        break;
-      case 3:
-        setKeyboardArr(heLetters);
-        break;
-      case 4:
-        setKeyboardArr(symbols);
-        break;
-      default:
-        setKeyboardArr([]);
-    }
+    setKeyboardArr(
+      keyboardData[type].map((char, key) => (
+        <Key content={char.content} key={key} handleKeyPress={handleKeyPress} />
+      ))
+    );
   }
-  console.log(keyboardArr);
   return (
     <div>
-      <div className="keyboard-container">
-        {keyboardArr.map((char, key) => (
-          <Key
-            content={char.content}
-            key={key}
-            handleKeyPress={addCharToText}
-          />
-        ))}
-        <Key content=" " />
-      </div>
-      <div>
+      <div className="buttons-container">
         <button
           onClick={() => {
             changeKeyboardContent(0);
@@ -82,6 +52,10 @@ function Keyboard({ addCharToText }) {
         >
           symbols
         </button>
+      </div>
+      <div className="keyboard-container">
+        {keyboardArr}
+        <Key className="space" content=" " />
       </div>
     </div>
   );
