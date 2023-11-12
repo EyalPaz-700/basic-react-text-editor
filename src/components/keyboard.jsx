@@ -10,29 +10,14 @@ import {
 
 function Keyboard({ addCharToText }) {
   const [keyboardArr, setKeyboardArr] = useState(enLetters);
+  const layouts = {
+    English: enLetters,
+    "Upper Case": enUperCaseLetters,
+    Numbers: numbers,
+    עברית: heLetters,
+    Symbols: symbols,
+  };
 
-  function changeKeyboardContent(type) {
-    switch (type) {
-      case 0:
-        setKeyboardArr(enLetters);
-        break;
-      case 1:
-        setKeyboardArr(enUperCaseLetters);
-        break;
-      case 2:
-        setKeyboardArr(numbers);
-        break;
-      case 3:
-        setKeyboardArr(heLetters);
-        break;
-      case 4:
-        setKeyboardArr(symbols);
-        break;
-      default:
-        setKeyboardArr([]);
-    }
-  }
-  console.log(keyboardArr);
   return (
     <div>
       <div className="keyboard-container">
@@ -43,45 +28,25 @@ function Keyboard({ addCharToText }) {
             handleKeyPress={addCharToText}
           />
         ))}
-        <Key content=" " handleKeyPress={addCharToText} />
+      </div>
+      <div className="specialKeys">
+        <Key content="Space" handleKeyPress={addCharToText} />
         <Key content="New Line" handleKeyPress={addCharToText} />
       </div>
-      <div>
-        <button
-          onClick={() => {
-            changeKeyboardContent(0);
-          }}
-        >
-          lower case
-        </button>
-        <button
-          onClick={() => {
-            changeKeyboardContent(1);
-          }}
-        >
-          UPPER CASE
-        </button>
-        <button
-          onClick={() => {
-            changeKeyboardContent(2);
-          }}
-        >
-          numbers
-        </button>
-        <button
-          onClick={() => {
-            changeKeyboardContent(3);
-          }}
-        >
-          עברית
-        </button>
-        <button
-          onClick={() => {
-            changeKeyboardContent(4);
-          }}
-        >
-          symbols
-        </button>
+
+      <div className="keyboard-buttons">
+        {Object.entries(layouts).map(([layoutName, layout]) => {
+          return (
+            <button
+              key={layoutName}
+              onClick={() => {
+                setKeyboardArr(layout);
+              }}
+            >
+              {layoutName}
+            </button>
+          );
+        })}
       </div>
     </div>
   );

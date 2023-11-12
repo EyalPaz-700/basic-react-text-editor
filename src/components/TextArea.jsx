@@ -5,17 +5,29 @@ export default function TextArea({ chars }) {
   return (
     <div className="text-area">
       {chars.map((char, index) => {
-        return char.content === "New Line" ? (
-          <br />
-        ) : (
-          <Char
-            key={index}
-            content={char.content}
-            font={char.font}
-            fontSize={char.fontSize}
-            color={char.color}
-          />
-        );
+        if (char.content === "New Line") {
+          return <br key={index} />;
+        } else if (char.content === "Space") {
+          return (
+            <Char
+              key={index}
+              content={" "}
+              font={char.font}
+              fontSize={char.fontSize}
+              color={char.color}
+            />
+          );
+        } else {
+          return (
+            <Char
+              key={index}
+              content={char.content}
+              font={char.font}
+              fontSize={char.fontSize}
+              color={char.color}
+            />
+          );
+        }
       })}
     </div>
   );
