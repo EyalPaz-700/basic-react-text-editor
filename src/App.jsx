@@ -16,7 +16,6 @@ function App() {
   };
   console.log("char settings:");
   function addCharToText(char) {
-    console.log("fontSize 1", fontSize);
     obj.content = char;
     setText((prev) => {
       return [...prev, obj];

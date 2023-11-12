@@ -11,7 +11,6 @@ import {
 function Keyboard({ addCharToText }) {
   const [keyboardArr, setKeyboardArr] = useState(enLetters);
 
-  console.log("render");
   function changeKeyboardContent(type) {
     switch (type) {
       case 0:
@@ -44,7 +43,8 @@ function Keyboard({ addCharToText }) {
             handleKeyPress={addCharToText}
           />
         ))}
-        <Key content=" " />
+        <Key content=" " handleKeyPress={addCharToText} />
+        <Key content="New Line" handleKeyPress={addCharToText} />
       </div>
       <div>
         <button

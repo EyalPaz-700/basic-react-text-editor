@@ -5,7 +5,9 @@ export default function TextArea({ chars }) {
   return (
     <div className="text-area">
       {chars.map((char, index) => {
-        return (
+        return char.content === "New Line" ? (
+          <br />
+        ) : (
           <Char
             key={index}
             content={char.content}
