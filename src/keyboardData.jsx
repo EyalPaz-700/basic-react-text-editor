@@ -52,7 +52,7 @@ export const enUperCaseLetters = [
   { content: "W" },
   { content: "X" },
   { content: "Y" },
-  { content: "Z" },
+  { content: "Z" }
 ];
 export const numbers = [
   { content: "1" },
@@ -64,7 +64,7 @@ export const numbers = [
   { content: "7" },
   { content: "8" },
   { content: "9" },
-  { content: "0" },
+  { content: "0" }
 ];
 export const heLetters = [
   { content: "א" },
@@ -88,7 +88,7 @@ export const heLetters = [
   { content: "ק" },
   { content: "ר" },
   { content: "ש" },
-  { content: "ת" },
+  { content: "ת" }
 ];
 export const symbols = [
   { content: "!" },
@@ -107,5 +107,5 @@ export const symbols = [
   { content: "\\" },
   { content: "." },
   { content: "," },
-  { content: ":" },
+  { content: ":" }
 ];
