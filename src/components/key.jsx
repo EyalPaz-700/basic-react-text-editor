@@ -1,6 +1,6 @@
 import React from "react";
 
-function Key(props) {
+function Key({ content, handleKeyPress, color, font, fontSize }) {
   const keyStyle = {
     border: "1px solid black",
     margin: "5px",
@@ -8,7 +8,7 @@ function Key(props) {
     display: "inline-block",
     cursor: "pointer",
   };
-  if (props.content === " ") {
+  if (content === " ") {
     keyStyle.padding = "10px";
     keyStyle.margin = "auto 5px";
     keyStyle.width = "9em";
@@ -16,11 +16,11 @@ function Key(props) {
   return (
     <div
       onClick={(e) => {
-        props.handleKeyPress(e.target.textContent);
+        handleKeyPress(e.target.textContent, color, fontSize, font);
       }}
       style={keyStyle}
     >
-      {props.content}
+      {content}
     </div>
   );
 }

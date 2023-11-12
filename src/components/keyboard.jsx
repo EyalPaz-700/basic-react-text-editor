@@ -8,76 +8,26 @@ import {
   symbols,
 } from "../keyboardData.jsx";
 
-function Keyboard(props) {
-  const [keyboardArr, setKeyboardArr] = useState(
-    enLetters.map((char, key) => (
-      <Key content={char.content} key={key} handleKeyPress={handleKeyPress} />
-    ))
-  );
+function Keyboard({ addCharToText }) {
+  const [keyboardArr, setKeyboardArr] = useState(enLetters);
 
-  //!!! needs to be changed
-  function handleKeyPress(char) {
-    //add char to textarea array
-    //maybe call a function it get from App that modifies the textarea?
-  }
-  ///^^^
-
+  console.log("render");
   function changeKeyboardContent(type) {
     switch (type) {
       case 0:
-        setKeyboardArr(
-          enLetters.map((char, key) => (
-            <Key
-              content={char.content}
-              key={key}
-              handleKeyPress={handleKeyPress}
-            />
-          ))
-        );
+        setKeyboardArr(enLetters);
         break;
       case 1:
-        setKeyboardArr(
-          enUperCaseLetters.map((char, key) => (
-            <Key
-              content={char.content}
-              key={key}
-              handleKeyPress={handleKeyPress}
-            />
-          ))
-        );
+        setKeyboardArr(enUperCaseLetters);
         break;
       case 2:
-        setKeyboardArr(
-          numbers.map((char, key) => (
-            <Key
-              content={char.content}
-              key={key}
-              handleKeyPress={handleKeyPress}
-            />
-          ))
-        );
+        setKeyboardArr(numbers);
         break;
       case 3:
-        setKeyboardArr(
-          heLetters.map((char, key) => (
-            <Key
-              content={char.content}
-              key={key}
-              handleKeyPress={handleKeyPress}
-            />
-          ))
-        );
+        setKeyboardArr(heLetters);
         break;
       case 4:
-        setKeyboardArr(
-          symbols.map((char, key) => (
-            <Key
-              content={char.content}
-              key={key}
-              handleKeyPress={handleKeyPress}
-            />
-          ))
-        );
+        setKeyboardArr(symbols);
         break;
       default:
         setKeyboardArr([]);
@@ -87,15 +37,51 @@ function Keyboard(props) {
   return (
     <div>
       <div className="keyboard-container">
-        {keyboardArr}
-        <Key content=" "/>
+        {keyboardArr.map((char, key) => (
+          <Key
+            content={char.content}
+            key={key}
+            handleKeyPress={addCharToText}
+          />
+        ))}
+        <Key content=" " />
       </div>
       <div>
-        <button onClick={()=>{changeKeyboardContent(0)}}>lower case</button>
-        <button onClick={()=>{changeKeyboardContent(1)}}>UPPER CASE</button>
-        <button onClick={()=>{changeKeyboardContent(2)}}>numbers</button>
-        <button onClick={()=>{changeKeyboardContent(3)}}>עברית</button>
-        <button onClick={()=>{changeKeyboardContent(4)}}>symbols</button>
+        <button
+          onClick={() => {
+            changeKeyboardContent(0);
+          }}
+        >
+          lower case
+        </button>
+        <button
+          onClick={() => {
+            changeKeyboardContent(1);
+          }}
+        >
+          UPPER CASE
+        </button>
+        <button
+          onClick={() => {
+            changeKeyboardContent(2);
+          }}
+        >
+          numbers
+        </button>
+        <button
+          onClick={() => {
+            changeKeyboardContent(3);
+          }}
+        >
+          עברית
+        </button>
+        <button
+          onClick={() => {
+            changeKeyboardContent(4);
+          }}
+        >
+          symbols
+        </button>
       </div>
     </div>
   );

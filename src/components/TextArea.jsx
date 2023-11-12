@@ -4,13 +4,16 @@ import Char from "./Char";
 export default function TextArea({ chars }) {
   return (
     <div className="text-area">
-      {chars.map((char) => {
-        <Char
-          content={char.content}
-          font={char.font}
-          fontSize={char.fontSize}
-          color={char.color}
-        />;
+      {chars.map((char, index) => {
+        return (
+          <Char
+            key={index}
+            content={char.content}
+            font={char.font}
+            fontSize={char.fontSize}
+            color={char.color}
+          />
+        );
       })}
     </div>
   );
