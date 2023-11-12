@@ -93,9 +93,9 @@ function Keyboard(props) {
       <div>
         <button onClick={()=>{changeKeyboardContent(0)}}>lower case</button>
         <button onClick={()=>{changeKeyboardContent(1)}}>UPPER CASE</button>
-        <button onClick={()=>{changeKeyboardContent(2)}}>עברית</button>
-        <button onClick={()=>{changeKeyboardContent(3)}}>symbols</button>
-        <button onClick={()=>{changeKeyboardContent(4)}}>numbers</button>
+        <button onClick={()=>{changeKeyboardContent(2)}}>numbers</button>
+        <button onClick={()=>{changeKeyboardContent(3)}}>עברית</button>
+        <button onClick={()=>{changeKeyboardContent(4)}}>symbols</button>
       </div>
     </div>
   );
