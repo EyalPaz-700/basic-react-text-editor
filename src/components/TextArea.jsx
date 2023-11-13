@@ -29,7 +29,12 @@ export default function TextArea({ chars }) {
           );
         }
       })}
-      <span className="blinking-char">|</span>
+      <span
+        style={{ fontSize: chars[chars.length - 1]?.fontSize * 2 }}
+        className="blinking-char"
+      >
+        |
+      </span>
     </div>
   );
 }

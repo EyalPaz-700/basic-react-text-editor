@@ -3,7 +3,7 @@ import React from "react";
 export default function Char({ color, content, font, fontSize }) {
   const charStyle = {
     color: color,
-    fontSize: fontSize + "px",
+    fontSize: fontSize * 2 + "px",
     fontFamily: font,
     whiteSpace: "pre",
   };
