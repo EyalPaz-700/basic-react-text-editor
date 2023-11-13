@@ -9,18 +9,37 @@ function App() {
   const [color, setColor] = useState("black");
   const [font, setFont] = useState("Arial");
   const [fontSize, setFontSize] = useState(14);
+  const [prevActions, setPrevAction] = useState([]);
   const obj = {
     color: color,
     fontSize: fontSize,
     font: font,
   };
+  function undoLastAction() {
+    if (prevActions[0]) {
+      if (prevActions[prevActions.length - 1] === "addedChar") {
+        removeChar();
+      } else if (typeof prevActions[prevActions.length - 1] === "object") {
+        setText((prev) => {
+          return [...prev, prevActions[prevActions.length - 1]];
+        })
+      }
+      setPrevAction(prevActions.slice(0, -1));
+    } else {
+      alert("cannot undo any further");
+    }
+  }
   function addCharToText(char) {
     obj.content = char;
     setText((prev) => {
+      setPrevAction([...prevActions, "addedChar"]);
+      console.log(prevActions);
       return [...prev, obj];
     });
   }
   function removeChar() {
+    setPrevAction([...prevActions, text[text.length - 1]]);
+    console.log("prevActions: ", prevActions);
     setText(text.length > 0 ? text.slice(0, text.length - 1) : []);
   }
 
@@ -49,7 +68,7 @@ function App() {
         fontSize={fontSize}
         font={font}
         remove={removeChar}
-        undo={removeChar}
+        undo={undoLastAction}
         reset={resetText}
       />
       <TextArea chars={text} />
