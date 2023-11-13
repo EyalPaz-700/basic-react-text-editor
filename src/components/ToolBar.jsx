@@ -7,7 +7,9 @@ export default function ToolBar({
   color,
   font,
   fontSize,
-  prev,
+  remove,
+  undo,
+  reset,
 }) {
   const colorPickerStyle = {
     color: color,
@@ -37,7 +39,7 @@ export default function ToolBar({
 
         <div className="font">
           <label htmlFor="fontSelector">
-            <h4> Font: </h4>
+            <h4> Font</h4>
           </label>
           <select id="fontSelector" onChange={changeFont}>
             <option value={font}>{font}</option>
@@ -51,8 +53,14 @@ export default function ToolBar({
             )}
           </select>
         </div>
-        <div onClick={prev}>
+        <div onClick={undo}>
           <h4> Undo</h4>
+        </div>
+        <div onClick={remove}>
+          <h4> Delete</h4>
+        </div>
+        <div onClick={reset}>
+          <h4> Reset</h4>
         </div>
       </div>
     </>

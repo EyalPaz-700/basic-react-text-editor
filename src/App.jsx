@@ -24,6 +24,10 @@ function App() {
     setText(text.length > 0 ? text.slice(0, text.length - 1) : []);
   }
 
+  function resetText() {
+    setText([]);
+  }
+
   function changeFontSize(e) {
     setFontSize(e.target.value);
   }
@@ -44,7 +48,9 @@ function App() {
         color={color}
         fontSize={fontSize}
         font={font}
-        prev={removeChar}
+        remove={removeChar}
+        undo={removeChar}
+        reset={resetText}
       />
       <TextArea chars={text} />
       <Keyboard type={0} addCharToText={(char) => addCharToText(char)} />

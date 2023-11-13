@@ -5,6 +5,7 @@ export default function Char({ color, content, font, fontSize }) {
     color: color,
     fontSize: fontSize + "px",
     fontFamily: font,
+    whiteSpace: "pre",
   };
   return <span style={charStyle}>{content}</span>;
 }
