@@ -9,3 +9,16 @@
     height: 50vh;
     border: 3px solid black;
 }
+
+@keyframes blink {
+    0%, 100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  .blinking-char {
+    animation: blink 0.8s infinite; /* 1s duration, infinite loop */
+  }

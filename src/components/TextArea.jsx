@@ -29,6 +29,7 @@ export default function TextArea({ chars }) {
           );
         }
       })}
+      <span className="blinking-char">|</span>
     </div>
   );
 }
